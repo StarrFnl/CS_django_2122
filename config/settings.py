@@ -128,3 +128,5 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+# 로그인 성공후 이동하는 URL
+LOGIN_REDIRECT_URL = '/'
