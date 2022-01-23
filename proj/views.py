@@ -5,3 +5,6 @@ from .models import PostNormal
 
 def index(request):
     return render(request, 'base.html') #나중에 proj/main.html로 변경해야함
+
+def list(request):
+    return render(request, 'proj/list.html')
