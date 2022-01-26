@@ -4,7 +4,7 @@ from .models import PostNormal
 # Create your views here.
 
 def index(request):
-    return render(request, 'base.html') #나중에 proj/main.html로 변경해야함
+    return render(request, 'titlep/titlep.html') #나중에 proj/main.html로 변경해야함
 
 def list(request):
     return render(request, 'proj/list.html')
