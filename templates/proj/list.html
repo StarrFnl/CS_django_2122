@@ -17,7 +17,7 @@
             <a class="btn" href="#">{% bs_icon 'list' %}</a>
         </div>
     </div>
-    
+
     <table class="table">
         <thead>
         <tr class="text-center thead-dark">
@@ -29,18 +29,38 @@
         </tr>
         </thead>
         <tbody>
+        {% if post_normal_list %}
+            {% for post_normal in post_normal_list %}
         <tr class="text-center">
-            <td>1</td>
-            <td>임시</td>
-            <td>5.0</td>
-            <td>1</td>
-            <td>1</td>
+
+                <td>{{ post_normal.id }}(미정)</td>
+                <td><a href="{% url 'proj:detail_normal' post_normal.id %}">{{ post_normal.subject }}</a></td>
+                <td>아직 빔</td>
+                <td>{{ post_normal.viewCount }}</td>
+                <td>
+                    {% if post_normal.modify_date is None %}
+                    {{ post_normal.create_date }}
+                    {% else %}
+                    {{ post_normal.modify_date }}(수정됨)
+                    {% endif %}
+                </td>
+
         </tr>
+
+            {% endfor %}
+        {% else %}
+        <p>리스트가 비었습니다.</p>
         </tbody>
+        {% endif %}
     </table>
     <ul class="pagination justify-content-center">
 
     </ul>
+    {% if user.is_staff %}
+    <a href="{% url 'proj:create_normal' %}" class="btn btn-primary">질문 등록하기</a>
+    {% else %}
+    <!--staff user 아닐 시 게시글 등록 불가. 영화게시판의 경우-->
+    {% endif %}
 
 </div>
 {% endblock %}
