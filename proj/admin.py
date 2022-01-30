@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import PostNormal
+from .models import Post_Normal
 
 # Register your models here.
-class PostNormalAdmin(admin.ModelAdmin):
+class Post_NormalAdmin(admin.ModelAdmin):
     search_fields = ['subject']
 
-admin.site.register(PostNormal, PostNormalAdmin)
+admin.site.register(Post_Normal, Post_NormalAdmin)
+
