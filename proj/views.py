@@ -30,3 +30,12 @@ def post_normal_create(request):
     context = {'form': form}
     return render(request, 'proj/post_normal_create.html', context)
 
+
+
+def detail_normal(request, post_normal_id):
+    """
+    pybo 내용 출력
+    """
+    post_normal = Post_Normal.objects.get(id=post_normal_id)
+    context = {'post_normal': post_normal}
+    return render(request, 'detailp/detail_main.html', context)

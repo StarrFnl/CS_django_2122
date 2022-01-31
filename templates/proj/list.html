@@ -57,7 +57,7 @@
 
     </ul>
     {% if user.is_staff %}
-    <a href="{% url 'proj:create_normal' %}" class="btn btn-primary">질문 등록하기</a>
+    <a href="{% url 'proj:create_normal' %}" class="btn btn-primary">게시글 등록하기</a>
     {% else %}
     <!--staff user 아닐 시 게시글 등록 불가. 영화게시판의 경우-->
     {% endif %}
