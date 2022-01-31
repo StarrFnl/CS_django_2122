@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from common.models import CustomUser
 
 # Create your models here.
 
 class Post(models.Model):
+    id = models.AutoField(primary_key=True)
+
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True, default=None)
     subject = models.CharField(max_length=200)
@@ -17,6 +20,8 @@ class Post(models.Model):
         abstract = True
 
 class Reply(models.Model):
+    id = models.AutoField(primary_key=True)
+
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
     content = models.TextField()
@@ -40,17 +45,17 @@ class Post_Normal(Post):
 
 
 class Reply_Normal(Reply):
-    author = models.ForeignKey(User, related_name = "reply_normal_author", on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, related_name = "reply_normal_author", on_delete=models.CASCADE)
     post = models.ForeignKey(Post_Normal, related_name = "replied_post_normal",on_delete=models.CASCADE)
 
 
 class Post_Evaluate(Post):
-    author = models.ForeignKey(User, related_name = "post_evaluate_author", on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, related_name = "post_evaluate_author", on_delete=models.CASCADE)
     rate = models.FloatField(default=0.0)
 
 
 class Reply_Evaluate(Reply):
-    author = models.ForeignKey(User, related_name = "reply_evaluate_author", on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, related_name = "reply_evaluate_author", on_delete=models.CASCADE)
     post = models.ForeignKey(Post_Evaluate, related_name = "replied_post_evaluate", on_delete=models.CASCADE)
     reeScore = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
 
