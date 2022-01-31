@@ -14,8 +14,6 @@ def list(request):
     context = {'post_normal_list': post_normal_list}
     return render(request, 'proj/list.html', context)
 
-def detail_normal(request, post_normal_id):
-    return render(request, 'proj/#/')
 
 def post_normal_create(request):
     if request.method == 'POST':
