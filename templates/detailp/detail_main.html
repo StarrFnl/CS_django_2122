@@ -4,7 +4,7 @@
     <div id="content">
         <div class="mv_info">
             <h3 class="h_movie">
-
+                {{ post_normal.subject }}
             </h3>
             <strong class="h_movie2" title=""></strong>
             <div class="main_score">
@@ -56,13 +56,15 @@
                     <em>줄거리()</em>
                 </dt>
                 <dt>
-                    <p>줄거리내용<!-- <br> 이용해서 줄거리 부분을 만들어 갈 예정--></p>
+                    <p>{{ post_normal.content }}</p>
                 </dt>
             </dl>
             <div id="poster">
-                <a>
-                    <!-- img src="" alt=" 영화 포스터 이미지 넣는 부분-->
-                </a>
+                {% if post_normal.image %}
+                    <img src="{{ post_normal.image.url }}" alt="{{ post_normal.image }}" style="width:100px; height:100px">
+                {% else %}
+                    <p>이미지가 없습니다.</p>
+                {% endif %}
             </div>
         </div>
     </div>
