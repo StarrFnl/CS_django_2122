@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="page-wrapper">
+    <div id="content">
+        <div class="mv_info">
+            <h3 class="h_movie">
+
+            </h3>
+            <strong class="h_movie2" title=""></strong>
+            <div class="main_score">
+                <div class="rtscore">
+
+                </div>
+                <div class="mcscore">
+
+                </div>
+                <div class="imdbscore">
+
+                </div>
+                <div class="navscore">
+
+                </div>
+                <div class="daumscore">
+
+                </div>
+            </div>
+            <dl class="info_spec">
+                <dt class="step1">
+                    <em>개요()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <span>장르</span>
+                        <span>장르</span>
+                        <span>개봉국가</span>
+                        <span>개봉날짜</span>
+                    </p>
+                </dd>
+                <dt class="step2">
+                    <em>감독()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <a>감독이름</a>
+                    </p>
+                </dd>
+                <dt class="step3">
+                    <em>출연()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <a>출연배우들이름</a>
+                    </p>
+                </dd>
+                <dt class="story_line">
+                    <em>줄거리()</em>
+                </dt>
+                <dt>
+                    <p>줄거리내용<!-- <br> 이용해서 줄거리 부분을 만들어 갈 예정--></p>
+                </dt>
+            </dl>
+            <div id="poster">
+                <a>
+                    <!-- img src="" alt=" 영화 포스터 이미지 넣는 부분-->
+                </a>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+{% endblock %}
