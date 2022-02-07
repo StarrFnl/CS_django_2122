@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from proj import views
+# 이미지 업로드용
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -24,5 +27,5 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('title/', include('titlep.urls')),
     path('', views.index, name='index'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

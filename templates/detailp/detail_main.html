@@ -59,15 +59,40 @@
                     <p>{{ post_normal.content }}</p>
                 </dt>
             </dl>
-            <div id="poster">
+            <div id="poster" class="container">
                 {% if post_normal.image %}
-                    <img src="{{ post_normal.image.url }}" alt="{{ post_normal.image }}" style="width:100px; height:100px">
+
+                        <img src="{{ post_normal.image.url }}" alt="{{ post_normal.image }}" width="100" height="100">
+
                 {% else %}
                     <p>이미지가 없습니다.</p>
                 {% endif %}
+
+                {% for photo in post_normal.photo_set.all%}
+                    <img src="{{ photo.images.url }}" alt="{{ post_normal.image }}" width="100" height="100">
+                {% endfor %}
             </div>
         </div>
+        {% if user.is_staff %}
+        <div class="my-3">
+            <a href="#"
+               class="btn btn-sm btn-outline-secondary">수정(미완)</a>
+            <a href="#" class="delete btn btn-sm btn-outline-secondary"
+               data-uri="{% url 'proj:post_normal_delete' post_normal.id  %}">삭제</a>
+        </div>
+        {% endif %}
     </div>
     <!--여기 자리에 detail_comment navbar처럼 붙여오기-->
 </div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 {% endblock %}
