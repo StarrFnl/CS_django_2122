@@ -57,6 +57,7 @@ class Reply_Evaluate(Reply):
 
 # # image 여러 개 하려면 외부키로 줘야 하는데 post가 abstract라 외부키가 안먹음. 그러면 post별로 각자 연결시켜야하나?
 class Photo(models.Model):
+    id = models.AutoField(primary_key=True)
     post_n = models.ForeignKey(Post_Normal, on_delete=models.CASCADE, null=True)
     post_e = models.ForeignKey(Post_Evaluate, on_delete=models.CASCADE, null=True)
     images = models.ImageField(upload_to='images/', blank=True, null=True)
