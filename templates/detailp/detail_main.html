@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="page-wrapper">
+    <div id="content">
+        <div class="mv_info">
+            <h3 class="h_movie">
+                {{ post_normal.subject }}
+            </h3>
+            <strong class="h_movie2" title=""></strong>
+            <div class="main_score">
+                <div class="rtscore">
+
+                </div>
+                <div class="mcscore">
+
+                </div>
+                <div class="imdbscore">
+
+                </div>
+                <div class="navscore">
+
+                </div>
+                <div class="daumscore">
+
+                </div>
+            </div>
+            <dl class="info_spec">
+                <dt class="step1">
+                    <em>개요()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <span>장르</span>
+                        <span>장르</span>
+                        <span>개봉국가</span>
+                        <span>개봉날짜</span>
+                    </p>
+                </dd>
+                <dt class="step2">
+                    <em>감독()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <a>감독이름</a>
+                    </p>
+                </dd>
+                <dt class="step3">
+                    <em>출연()</em>
+                </dt>
+                <dd>
+                    <p>
+                        <a>출연배우들이름</a>
+                    </p>
+                </dd>
+                <dt class="story_line">
+                    <em>줄거리()</em>
+                </dt>
+                <dt>
+                    <p>{{ post_normal.content }}</p>
+                </dt>
+            </dl>
+            <div id="poster" class="container">
+                {% if post_normal.image %}
+
+                        <img src="{{ post_normal.image.url }}" alt="{{ post_normal.image }}" width="100" height="100">
+
+                {% else %}
+                    <p>이미지가 없습니다.</p>
+                {% endif %}
+
+                {% for photo in post_normal.photo_set.all%}
+                    <img src="{{ photo.images.url }}" alt="{{ post_normal.image }}" width="100" height="100">
+                {% endfor %}
+            </div>
+        </div>
+        {% if user.is_staff %}
+        <div class="my-3">
+            <a href="#"
+               class="btn btn-sm btn-outline-secondary">수정(미완)</a>
+            <a href="#" class="delete btn btn-sm btn-outline-secondary"
+               data-uri="{% url 'proj:post_normal_delete' post_normal.id  %}">삭제</a>
+        </div>
+        {% endif %}
+    </div>
+    <!--여기 자리에 detail_comment navbar처럼 붙여오기-->
+</div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
+{% endblock %}

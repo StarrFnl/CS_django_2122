@@ -1,4 +1,8 @@
+my_settings.py
 .idea
 db.sqlite3
 *.pyc
 __pycache__
+images/
+
+>>>>>>> 09ef66388e1f8d55529b63d82103fc3a22d90382
