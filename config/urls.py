@@ -26,6 +26,7 @@ urlpatterns = [
     path('proj/', include('proj.urls')),
     path('common/', include('common.urls')),
     path('title/', include('titlep.urls')),
+    path('payment/', include('payment.urls')),
     path('', views.index, name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

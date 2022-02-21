@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'titlep.apps.TitlepConfig',
     'common.apps.CommonConfig',
     'proj.apps.ProjConfig',
+    'payment.apps.PaymentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
