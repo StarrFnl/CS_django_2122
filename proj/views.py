@@ -4,6 +4,7 @@ from .models import Post_Normal, Photo
 from .forms import Post_Normal_Form
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -12,8 +13,14 @@ def index(request):
     return render(request, 'titlep/titlep.html') #나중에 proj/main.html로 변경해야함
 
 def list(request):
+    page = request.GET.get('page', '1')
+
     post_normal_list = Post_Normal.objects.order_by('-create_date')
-    context = {'post_normal_list': post_normal_list}
+    paginator = Paginator(post_normal_list, 10)
+    max_page = len(paginator.page_range)
+    page_obj = paginator.get_page(page)
+
+    context = {'post_normal_list': page_obj, 'max_page': max_page}
     return render(request, 'proj/list.html', context)
 
 
